@@ -1,0 +1,484 @@
+/* --- Variáveis Globais (Tema Xbox Original) --- */
+:root {
+    --xbox-green-bright: #7CFC00; /* Verde-limão brilhante */
+    --xbox-green-dark: #3a7500;
+    --xbox-bg-dark: #000;
+    --xbox-bg-container: #1a1a1a;
+    --xbox-bg-box: #2a2a2a;
+    --xbox-text-primary: #e0e0e0;
+    --xbox-text-secondary: #999;
+    --font-retro: Tahoma, Verdana, sans-serif;
+}
+
+/* --- Animação de Brilho Pulsante (Para o Título) --- */
+@keyframes pulse-glow {
+    0% { text-shadow: 0 0 8px var(--xbox-green-bright), 0 0 10px var(--xbox-green-bright); }
+    50% { text-shadow: 0 0 15px var(--xbox-green-bright), 0 0 25px var(--xbox-green-bright); }
+    100% { text-shadow: 0 0 8px var(--xbox-green-bright), 0 0 10px var(--xbox-green-bright); }
+}
+
+/* --- Reset Básico --- */
+body {
+    background-color: var(--xbox-bg-dark); 
+    color: var(--xbox-text-primary);
+    font-family: var(--font-retro);
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- Layout Principal --- */
+.container {
+    width: 960px;
+    margin: 20px auto;
+    background-color: var(--xbox-bg-container);
+    border: 3px solid var(--xbox-green-dark);
+    box-shadow: 0 0 25px var(--xbox-green-bright);
+    position: relative; 
+    z-index: 2;
+}
+
+/* --- Cabeçalho e Título Animado --- */
+.main-header {
+    background-color: #0f0f0f;
+    padding: 20px;
+    border-bottom: 2px solid var(--xbox-green-bright);
+    text-align: center;
+}
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.logo h1 {
+    color: var(--xbox-green-bright);
+    font-size: 3em; 
+    margin: 0;
+    animation: pulse-glow 3s infinite ease-in-out;
+}
+.subtitle {
+    color: var(--xbox-text-secondary);
+    margin: 0;
+    font-size: 1.1em;
+}
+
+/* --- Navegação --- */
+.main-nav {
+    background-color: #333;
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #555;
+}
+.main-nav a {
+    color: var(--xbox-green-bright);
+    text-decoration: none;
+    padding: 5px 20px;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+.main-nav a:hover,
+.main-nav a.nav-active {
+    background-color: var(--xbox-green-bright);
+    color: #000;
+}
+
+/* --- Conteúdo Principal --- */
+main {
+    padding: 20px;
+    position: relative; 
+}
+
+/* --- Layout de 2 Colunas (Index) --- */
+.content-wrapper { display: flex; }
+.content-main { flex: 3; margin-right: 20px; }
+.content-sidebar { flex: 1; }
+
+/* --- Caixas de Conteúdo --- */
+.content-box {
+    background-color: var(--xbox-bg-box);
+    border: 1px solid #444;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    position: relative;
+}
+.content-box h2 {
+    color: var(--xbox-green-bright);
+    border-bottom: 1px dashed var(--xbox-green-dark);
+    padding-bottom: 5px;
+    font-size: 1.5em;
+}
+.content-box ul { padding-left: 20px; }
+.content-box li { margin-bottom: 8px; }
+
+/* Lista de Notícias (Sidebar) */
+.news-list { list-style: none; padding: 0; }
+.news-list li {
+    padding: 5px 0;
+    border-bottom: 1px dotted #555;
+    color: var(--xbox-text-secondary);
+}
+.news-list li:last-child { border-bottom: none; }
+
+/* --- Sistema de Anúncios (Index) --- */
+.ad-rotator-container {
+    width: 728px;
+    height: 90px;
+    margin: 0 auto 20px auto;
+    background: #000;
+    border: 1px dashed #555;
+    overflow: hidden;
+}
+#ad-rotator { width: 100%; height: 100%; }
+.ad-banner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+.ad-banner h3 { margin: 0; font-size: 1.8em; }
+.ad-banner p { margin: 0; font-size: 1em; }
+
+/* --- Rodapé --- */
+.main-footer {
+    background-color: #111;
+    border-top: 2px solid var(--xbox-green-dark);
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9em;
+    color: var(--xbox-text-secondary);
+}
+.main-footer p { margin: 3px; }
+
+
+/* ---====================================--- */
+/* --- ESTILOS DO QUIZ TURBO --- */
+/* ---====================================--- */
+
+.quiz-container {
+    padding: 20px;
+    background-color: #0f0f0f;
+    min-height: 500px; 
+}
+
+/* --- Tela de Introdução --- */
+#quiz-intro-screen {
+    text-align: center;
+    padding: 40px 20px;
+}
+#quiz-intro-screen h2 {
+    font-size: 2.5em;
+    margin-top: 0;
+}
+#quiz-intro-screen p {
+    font-size: 1.2em;
+    color: var(--xbox-text-secondary);
+}
+#quiz-intro-screen ul {
+    list-style: none;
+    padding: 0;
+    margin: 30px 0;
+    text-align: left;
+    display: inline-block;
+}
+#quiz-intro-screen li {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+#quiz-intro-screen li strong {
+    color: var(--xbox-green-bright);
+}
+
+/* --- Botão Principal --- */
+.cta-button {
+    display: block;
+    width: 80%;
+    max-width: 400px;
+    margin: 20px auto 0 auto;
+    padding: 12px 25px;
+    background-color: var(--xbox-green-bright);
+    color: #000;
+    font-size: 1.3em;
+    font-weight: bold;
+    text-decoration: none;
+    border: 2px solid var(--xbox-green-bright);
+    text-align: center;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+.cta-button:hover {
+    background-color: transparent;
+    color: var(--xbox-green-bright);
+}
+.cta-button.large {
+    font-size: 1.8em;
+    padding: 15px 30px;
+}
+.cta-button.small {
+    font-size: 0.9em;
+    padding: 8px 15px;
+    margin: 0 auto;
+    display: table; 
+}
+
+/* Placar (Pontos, Questão, Tempo) */
+.quiz-ui {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #111;
+    border: 1px solid var(--xbox-green-dark);
+    padding: 15px;
+    margin-bottom: 20px;
+}
+.ui-box {
+    text-align: center;
+    color: var(--xbox-text-secondary);
+    font-weight: bold;
+}
+.ui-box span {
+    display: block;
+    font-size: 1.1em;
+}
+.ui-box span:last-child {
+    font-size: 1.5em;
+    color: var(--xbox-green-bright);
+}
+.ui-box.timer-warning span:last-child {
+    color: #FF4136; /* Vermelho perigo */
+    animation: pulse-glow 1s infinite ease-in-out;
+}
+
+/* Área da Pergunta */
+.question-area {
+    text-align: center;
+    margin: 20px 0 30px 0;
+}
+.question-area h2 {
+    color: #fff;
+    font-size: 1.8em;
+    border-bottom: none;
+}
+
+/* Área de Respostas (Botões e Input) */
+#answer-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    width: 80%;
+    margin: 0 auto;
+}
+.answer-button {
+    width: 100%;
+    margin: 0; 
+    font-size: 1.1em;
+    padding: 15px 10px;
+}
+.answer-button:nth-child(5) {
+    grid-column: 1 / -1; 
+    width: 50%;
+    margin: 0 auto; 
+}
+#answer-options #text-answer {
+    grid-column: 1 / -1;
+    padding: 12px;
+    background-color: #0d0d0d;
+    border: 1px solid var(--xbox-green-bright);
+    color: var(--xbox-text-primary);
+    font-size: 1.2em;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+#answer-options .cta-button {
+    grid-column: 1 / -1;
+    width: 50%;
+    margin: 10px auto 0 auto;
+}
+
+/* Sistema de Dica */
+.hint-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+#hint-text {
+    color: var(--xbox-green-bright);
+    font-style: italic;
+    margin-top: 15px;
+}
+
+/* --- Tela de Formulário Final --- */
+.game-overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    color: white;
+    text-align: center;
+    z-index: 10; 
+}
+#final-form-screen {
+    padding: 20px 30px; 
+    box-sizing: border-box; 
+}
+#final-form-screen h2 {
+    font-size: 2em;
+    color: var(--xbox-green-bright);
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.form-thank-you {
+    font-size: 1.3em;
+    color: var(--xbox-text-primary);
+    font-weight: normal;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+#final-form-screen p { 
+    font-size: 1.2em; 
+    margin: 5px 0;
+}
+#final-form-screen p strong {
+    color: var(--xbox-green-bright);
+    font-weight: bold;
+}
+#final-form-screen hr {
+    border: 0;
+    border-top: 1px dashed var(--xbox-green-dark);
+    margin: 20px 0;
+    width: 100%;
+}
+#score-form {
+    width: 100%; 
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0;
+}
+#score-form label {
+    font-size: 1.1em;
+    color: var(--xbox-text-secondary);
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+#score-form input[type="text"],
+#score-form textarea {
+    width: 100%;
+    padding: 10px;
+    background-color: #0d0d0d;
+    border: 1px solid var(--xbox-green-bright);
+    color: var(--xbox-text-primary);
+    font-size: 1.1em;
+    text-align: center;
+    margin-bottom: 10px;
+    box-sizing: border-box; 
+}
+#score-form textarea {
+    text-align: left;
+    height: 60px;
+    resize: none;
+}
+#score-form .cta-button {
+    width: 100%;
+    margin-top: 15px;
+}
+
+/* Sistema de Avaliação (Estrelas) - REMOVIDO */
+
+
+/* ---====================================--- */
+/* --- ESTILOS DO RANKING (CORRIGIDO) --- */
+/* ---====================================--- */
+
+.ranking-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    table-layout: fixed; 
+}
+.ranking-table thead tr {
+    background-color: var(--xbox-green-dark);
+    color: var(--xbox-green-bright);
+    border-bottom: 2px solid var(--xbox-green-bright);
+}
+
+.ranking-table th { 
+    padding: 12px; 
+    text-align: center; /* Centraliza TODOS os cabeçalhos */
+    vertical-align: middle;
+}
+
+.ranking-table tbody tr { 
+    border-bottom: 1px solid #444; 
+    /* CORREÇÃO: Remove o fundo alternado */
+    /* background-color: #222; <-- REMOVIDO */
+}
+.ranking-table tbody tr:hover { 
+    background-color: #333; 
+}
+
+.ranking-table td { 
+    padding: 10px 12px; 
+    color: var(--xbox-text-secondary);
+    vertical-align: top;
+    text-align: left; /* Padrão de alinhamento do conteúdo */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Colunas Específicas (Largura) */
+.ranking-table .col-pos { width: 8%; }
+.ranking-table .col-nome { width: 30%; }
+.ranking-table .col-pontos { width: 12%; }
+.ranking-table .col-tempo { width: 12%; }
+.ranking-table .col-msg { width: 38%; }
+
+/* Colunas Específicas (Estilo e Alinhamento de CONTEÚDO) */
+.ranking-table td.col-pos { 
+    color: var(--xbox-green-bright); 
+    text-align: center; /* Centraliza o "1º" */
+    font-weight: bold;
+}
+.ranking-table td.col-nome { 
+    color: var(--xbox-text-primary); 
+    font-weight: bold;
+    white-space: normal; 
+    line-height: 1.4;
+}
+.ranking-table td.col-nome small {
+    display: block;
+    font-weight: normal;
+    color: var(--xbox-text-secondary);
+    font-size: 0.9em;
+}
+
+.ranking-table td.col-pontos { 
+    color: var(--xbox-green-bright); 
+    font-weight: bold; 
+    text-align: center; /* Centraliza os pontos */
+}
+.ranking-table td.col-tempo { 
+    text-align: center; /* Centraliza o tempo */
+}
+.ranking-table td.col-msg { 
+    font-style: italic;
+    white-space: normal; 
+    line-height: 1.4;
+}
+
+.no-data { 
+    text-align: center; 
+    padding: 20px; 
+    color: var(--xbox-text-secondary); 
+}
