@@ -1,4 +1,5 @@
 /* --- Variáveis Globais (Tema Xbox Original) --- */
+
 :root {
     --xbox-green-bright: #7CFC00; /* Verde-limão brilhante */
     --xbox-green-dark: #3a7500;
@@ -11,6 +12,7 @@
 }
 
 /* --- Animação de Brilho Pulsante (Para o Título) --- */
+
 @keyframes pulse-glow {
     0% { text-shadow: 0 0 8px var(--xbox-green-bright), 0 0 10px var(--xbox-green-bright); }
     50% { text-shadow: 0 0 15px var(--xbox-green-bright), 0 0 25px var(--xbox-green-bright); }
@@ -18,15 +20,16 @@
 }
 
 /* --- Animação do Cursor Piscando (Para o Terminal) --- */
+
 @keyframes blink-cursor {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
 }
 
 
-/* --- Reset Básico (CORRIGIDO) --- */
+/* --- Reset Básico --- */
+
 html, body {
-    /* CORREÇÃO: Garante que o html e body ocupem a tela inteira */
     min-height: 100vh;
     background-color: transparent; 
 }
@@ -39,6 +42,7 @@ body {
 }
 
 /* --- ESTILO DO CANVAS STARFIELD --- */
+
 #starfield-canvas {
     position: fixed; /* Fixa o canvas na tela */
     top: 0;
@@ -50,20 +54,21 @@ body {
 
 
 /* --- Layout Principal --- */
+
 .container {
     width: 960px;
     margin: 20px auto;
     background-color: var(--xbox-bg-container);
     border: 3px solid var(--xbox-green-dark);
     box-shadow: 0 0 25px var(--xbox-green-bright);
-    
-    /* Z-index alto para ficar acima do Canvas */
+
     position: relative; 
     z-index: 2;
     overflow: hidden; 
 }
 
 /* --- Cabeçalho e Título Animado --- */
+
 .main-header {
     background-color: #0f0f0f;
     padding: 20px;
@@ -89,6 +94,7 @@ body {
 }
 
 /* --- Navegação --- */
+
 .main-nav {
     background-color: #333;
     padding: 8px;
@@ -108,7 +114,8 @@ body {
     color: #000;
 }
 
-/* --- Conteúdo Principal (CORRIGIDO) --- */
+/* --- Conteúdo Principal --- */
+
 main {
     padding: 20px;
     position: relative; 
@@ -116,11 +123,13 @@ main {
 }
 
 /* --- Layout de 2 Colunas (Index) --- */
+
 .content-wrapper { display: flex; }
 .content-main { flex: 3; margin-right: 20px; }
 .content-sidebar { flex: 1; }
 
 /* --- Caixas de Conteúdo --- */
+
 .content-box {
     background-color: var(--xbox-bg-box);
     border: 1px solid #444;
@@ -138,6 +147,7 @@ main {
 .content-box li { margin-bottom: 8px; }
 
 /* Lista de Notícias (Sidebar) */
+
 .news-list { list-style: none; padding: 0; }
 .news-list li {
     padding: 5px 0;
@@ -146,7 +156,8 @@ main {
 }
 .news-list li:last-child { border-bottom: none; }
 
-/* --- Sistema de Anúncios em Vídeo (Corrigido) --- */
+/* --- Sistema de Anúncios em Vídeo --- */
+
 .ad-rotator-container {
     width: 728px;
     height: 410px; /* Tamanho 16:9 para o vídeo */
@@ -162,6 +173,7 @@ main {
 }
 
 /* --- Rodapé --- */
+
 .main-footer {
     background-color: #111;
     border-top: 2px solid var(--xbox-green-dark);
@@ -184,6 +196,7 @@ main {
 }
 
 /* --- Tela de Introdução --- */
+
 #quiz-intro-screen {
     text-align: center;
     padding: 40px 20px;
@@ -212,6 +225,7 @@ main {
 }
 
 /* --- Botão Principal --- */
+
 .cta-button {
     display: block;
     width: 80%;
@@ -240,6 +254,7 @@ main {
 }
 
 /* Placar (Pontos, Questão, Tempo) */
+
 .quiz-ui {
     display: flex;
     justify-content: space-between;
@@ -268,6 +283,7 @@ main {
 }
 
 /* Área da Pergunta */
+
 .question-area {
     text-align: center;
     margin: 20px 0 30px 0;
@@ -279,6 +295,7 @@ main {
 }
 
 /* Área de Respostas (Botões e Input) */
+
 #answer-options {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -315,6 +332,7 @@ main {
 }
 
 /* Sistema de Dica */
+
 .hint-container {
     text-align: center;
     margin-bottom: 30px;
@@ -326,6 +344,7 @@ main {
 }
 
 /* --- Tela de Formulário Final --- */
+
 .game-overlay {
     display: flex;
     flex-direction: column;
@@ -408,7 +427,7 @@ main {
     margin-top: 15px;
 }
 
-/* --- (NOVO) TERMINAL INTERATIVO --- */
+/* --- TERMINAL INTERATIVO --- */
 
 .command-buttons {
     display: flex;
@@ -444,7 +463,7 @@ main {
 
 
 /* ---====================================--- */
-/* --- ESTILOS DO RANKING (FINALIZADO) --- */
+/* --- ESTILOS DO RANKING                 --- */
 /* ---====================================--- */
 
 .ranking-table {
@@ -484,6 +503,7 @@ main {
 }
 
 /* Colunas Específicas (Largura e Estilo de CONTEÚDO) */
+
 .ranking-table .col-pos { 
     width: 8%; 
     color: var(--xbox-green-bright); 
@@ -523,6 +543,7 @@ main {
 }
 
 /* --- ESTILO "HOLOFOTE" 1º LUGAR --- */
+
 .rank-first-place {
     background-color: var(--xbox-bg-box) !important;
     box-shadow: 0 0 10px rgba(124, 252, 0, 0.5); 
