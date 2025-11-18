@@ -26,7 +26,7 @@
 
 /* --- Reset Básico (CORRIGIDO) --- */
 html, body {
-    /* Garante que o html e body ocupem a tela inteira */
+    /* CORREÇÃO: Garante que o html e body ocupem a tela inteira */
     min-height: 100vh;
     background-color: transparent; 
 }
@@ -43,7 +43,7 @@ body {
     position: fixed; /* Fixa o canvas na tela */
     top: 0;
     left: 0;
-    z-index: 0; 
+    z-index: 0; /* Fica no fundo */
     pointer-events: none; 
     display: block;
 }
@@ -108,11 +108,11 @@ body {
     color: #000;
 }
 
-/* --- Conteúdo Principal --- */
+/* --- Conteúdo Principal (CORRIGIDO) --- */
 main {
     padding: 20px;
     position: relative; 
-    min-height: 500px; /* Garante que o container não colapse */
+    min-height: 500px; /* Garante que o main container não colapse */
 }
 
 /* --- Layout de 2 Colunas (Index) --- */
@@ -134,9 +134,7 @@ main {
     padding-bottom: 5px;
     font-size: 1.5em;
 }
-.content-box ul { 
-    padding-left: 20px; 
-}
+.content-box ul { padding-left: 20px; }
 .content-box li { margin-bottom: 8px; }
 
 /* Lista de Notícias (Sidebar) */
@@ -185,7 +183,7 @@ main {
     min-height: 500px; 
 }
 
-/* --- Tela de Introdução (CORRIGIDO) --- */
+/* --- Tela de Introdução --- */
 #quiz-intro-screen {
     text-align: center;
     padding: 40px 20px;
@@ -198,12 +196,11 @@ main {
     font-size: 1.8em;
     padding: 15px 30px;
 }
-/* CORREÇÃO DO BUG: Estilo da Lista de Regras */
 #quiz-intro-screen ul {
-    list-style: none; /* REMOVE os marcadores de lista feios */
+    list-style: none;
     padding: 0;
     margin: 30px 0;
-    text-align: center; /* Centraliza a lista inteira */
+    text-align: center;
 }
 #quiz-intro-screen li {
     font-size: 1.1em;
@@ -213,11 +210,6 @@ main {
 #quiz-intro-screen li strong {
     color: var(--xbox-green-bright);
 }
-#quiz-intro-screen p {
-    font-size: 1.2em;
-    color: var(--xbox-text-secondary);
-}
-
 
 /* --- Botão Principal --- */
 .cta-button {

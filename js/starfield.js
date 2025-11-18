@@ -1,8 +1,3 @@
-/*
- * STARFIELD EFFECT v1.0
- * Pure JavaScript background animation (no external images)
- */
-
 document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('starfield-canvas');
     if (!canvas) return; // Se não houver canvas (ex: em quiz.php), o script para
@@ -10,10 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const ctx = canvas.getContext('2d');
 
     // Define o tamanho inicial do canvas para o tamanho total da janela
+    
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
     // Atualiza o tamanho se a janela for redimensionada
+
     window.addEventListener('resize', () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -23,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const starColor = '#444444'; // Cor sutil (cinza escuro)
 
     // --- Classe Star ---
+
     class Star {
         constructor() {
             this.x = Math.random() * canvas.width;
@@ -41,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.y += this.speed;
 
             // Se a estrela sair da tela, ela volta ao topo
+
             if (this.y > canvas.height) {
                 this.y = 0;
                 this.x = Math.random() * canvas.width;
@@ -49,27 +48,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Inicialização ---
+
     let stars = [];
     for (let i = 0; i < numStars; i++) {
         stars.push(new Star());
     }
 
     // --- Loop de Animação (requestAnimationFrame) ---
+
     function animate() {
+
         // Limpa o frame anterior (fundo preto)
+
         ctx.fillStyle = 'black';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         // Atualiza e desenha todas as estrelas
+
         stars.forEach(star => {
             star.update();
             star.draw();
         });
 
         // Pede para o navegador desenhar o próximo frame
+
         requestAnimationFrame(animate);
     }
 
     // Inicia o loop
+
     animate();
 });

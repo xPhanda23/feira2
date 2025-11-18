@@ -7,7 +7,7 @@ include 'config.php'; // Inclui a conexão com o banco
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>:: HALL DA FAMA - X-PORTAL ::</title>
+    <title>:: HALL DA FAMA - PROGRAMAÇÃO WEB ::</title>
     <meta http-equiv="refresh" content="10">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -103,6 +103,7 @@ include 'config.php'; // Inclui a conexão com o banco
 
         <footer class="main-footer">
             <p>© 2025 - Projeto Feira de Informática "Programação Web".</p>
+            <p>Este site é um projeto educacional. Logotipos e marcas são usados para fins de demonstração.</p>
         </footer>
 
     </div>

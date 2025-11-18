@@ -1,23 +1,18 @@
-/*
- * TERMINAL INTERATIVO v1.1
- * Cérebro do terminal da index.html
- * (Bug do seletor e conteúdo corrigidos)
- */
-
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- 1. REFERÊNCIAS DOS ELEMENTOS ---
+
     const terminalText = document.getElementById('terminal-text');
-    // CORREÇÃO DO BUG: O seletor agora é '.command'
     const commandButtons = document.querySelectorAll('.command'); 
 
     // Se não houver terminal nesta página, para o script
+
     if (!terminalText || commandButtons.length === 0) {
         return;
     }
 
     // --- 2. CONTEÚDO DO TERMINAL (ATUALIZADO) ---
-    // (Este é o conteúdo do SEU tema)
+
     const commandResponses = {
         'html': {
             prompt: 'C:\\> HTML.exe',
@@ -33,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         'xampp': {
             prompt: 'C:\\> XAMPP.bat',
-            text: "É o nosso \"cérebro\" (servidor) local. O 'P' (PHP) e o 'M' (MySQL) do XAMPP são a dupla de Back-End que salva sua pontuação no ranking."
+            text: "É o nosso \"cérebro\" (servidor) local. O PHP e o MySQL do XAMPP são a dupla de Back-End que salva sua pontuação no ranking."
         }
     };
     
@@ -41,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentTypingTimeout; // Armazena o timer da digitação
 
     // --- 3. FUNÇÃO DO EFEITO DE DIGITAÇÃO ---
+
     function typeEffect(element, text, prompt) {
         // Se já estiver digitando, para a animação anterior
         if (isTyping) {
@@ -49,11 +45,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Começa a nova animação
+    
         isTyping = true;
         let i = 0;
         const speed = 25; // Velocidade da digitação (em milissegundos)
         
         // Limpa o terminal e mostra o "prompt" (ex: C:\>)
+
         element.innerHTML = `<span class="terminal-prompt">${prompt}</span> `;
         
         const textToType = text;
@@ -73,15 +71,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 4. OUVIR OS CLIQUES NOS BOTÕES ---
+
     commandButtons.forEach(button => {
         button.addEventListener('click', () => {
+
             // Pega o 'data-command' do botão (ex: "html")
+
             const command = button.dataset.command;
             
             // Pega a resposta correspondente
+
             const response = commandResponses[command];
             
             // Inicia o efeito (se houver uma resposta e não estiver digitando)
+
             if (response && !isTyping) {
                 typeEffect(terminalText, response.text, response.prompt);
             }
@@ -89,5 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Inicia o terminal com uma mensagem de boas-vindas
+    
     typeEffect(terminalText, 'Clique em um comando acima para executar...', 'C:\\>');
 });

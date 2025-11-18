@@ -1,5 +1,4 @@
 <?php
-// config.php
 
 // Variáveis de conexão com o banco de dados
 define('DB_SERVER', 'localhost'); // Geralmente é 'localhost' no XAMPP
@@ -17,4 +16,5 @@ if ($conn->connect_error) {
 
 // Define o conjunto de caracteres para evitar problemas com acentos
 $conn->set_charset("utf8mb4");
+
 ?>

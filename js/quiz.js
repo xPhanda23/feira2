@@ -1,8 +1,3 @@
-/*
- * QUIZ TURBO v1.4
- * Cérebro do Quiz (com Randomização de Respostas)
- */
-
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- 1. ELEMENTOS DO DOM ---
@@ -24,8 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const hiddenScoreInput = document.getElementById('hidden-score');
     const hiddenTimeInput = document.getElementById('hidden-time');
 
-
-    // --- NOVO: FUNÇÃO PARA EMBARALHAR ARRAY (Fisher-Yates) ---
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -34,8 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return array;
     }
 
-
     // --- 2. BANCO DE PERGUNTAS ---
+
     const questions = [
         {
             text: "O que é o Front-End?",
@@ -43,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
             hint: "É a parte que você vê e interage em um site, como os botões e o design.",
             points: 20,
             options: [
-                { text: 'A parte visual e interativa do site (o que o usuário vê).', correct: true },
+                { text: 'A parte visual do site (o que o usuário vê).', correct: true },
                 { text: 'O banco de dados que salva as informações.', correct: false },
                 { text: 'O servidor onde o site fica guardado.', correct: false },
                 { text: 'A velocidade da sua internet.', correct: false },
@@ -99,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     // --- 3. ESTADO DO JOGO ---
+
     let currentQuestionIndex = 0;
     let score = 0;
     let timeLeft = 60; 
@@ -170,6 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const userAnswer = input.value.trim().toLowerCase();
                 
                 // 1. CHECA O EASTER EGG (XBOX)
+                
                 if (userAnswer === 'xbox') {
                     alert('CONQUISTA SECRETA DESBLOQUEADA! +1000 PONTOS BÔNUS!');
                     selectAnswer(true, 1000); 
@@ -177,6 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 
                 // 2. CHECAGEM NORMAL (Responsivo)
+
                 const isCorrect = (userAnswer === 'responsivo' || userAnswer === 'design responsivo');
                 selectAnswer(isCorrect, question.points);
             };
@@ -220,6 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(timerId); 
 
         // Prepara o formulário final
+
         finalScoreDisplay.innerText = score;
         hiddenScoreInput.value = score;
         
@@ -231,11 +228,13 @@ document.addEventListener('DOMContentLoaded', () => {
         hiddenTimeInput.value = timeSpent;
 
         // Esconde o quiz principal e mostra a tela final
+
         mainQuizContent.style.display = 'none'; 
         finalFormScreen.style.display = 'flex';
     }
 
     // --- 5. ENVIO DO FORMULÁRIO (Fetch) ---
+
     scoreForm.addEventListener('submit', (e) => {
         e.preventDefault(); 
         const formData = new FormData(scoreForm);
@@ -266,6 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- 6. FUNÇÃO DE INICIALIZAÇÃO ---
+
     function startQuiz() {
         introScreen.style.display = 'none';
         mainQuizContent.style.display = 'block';
@@ -275,6 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 7. "OUVINTE" DE EVENTO INICIAL ---
+
     startButton.addEventListener('click', startQuiz);
 
 });

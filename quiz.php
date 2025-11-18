@@ -15,7 +15,7 @@
             <div class="logo">
                 <h1>PROGRAMAÇÃO WEB</h1>
             </div>
-            <p class="subtitle">O portal da nossa Feira de Informática</p>
+            <p class="subtitle">2° EMTI - Feira de Informática</p>
         </header>
 
         <nav class="main-nav">
@@ -77,7 +77,7 @@
                         <hr>
                         
                         <input type="text" id="nome-jogador" name="nome_jogador" placeholder="Seu nome completo" required>
-                        <input type="text" id="serie-jogador" name="serie_jogador" placeholder="Sua série (ex: 2º INFO)" required>
+                        <input type="text" id="serie-jogador" name="serie_jogador" placeholder="Sua série (ex: 2º reg 1)" required>
                         
                         <label>Deixe uma mensagem para os próximos visitantes:</label>
                         <textarea id="mensagem-jogador" name="mensagem_jogador" rows="3" placeholder="Sua dica ou comentário..."></textarea>
@@ -94,6 +94,7 @@
 
         <footer class="main-footer">
             <p>© 2025 - Projeto Feira de Informática "Programação Web".</p>
+            <p>Este site é um projeto educacional. Logotipos e marcas são usados para fins de demonstração.</p>
         </footer>
 
     </div> 
