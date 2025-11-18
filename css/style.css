@@ -17,15 +17,37 @@
     100% { text-shadow: 0 0 8px var(--xbox-green-bright), 0 0 10px var(--xbox-green-bright); }
 }
 
-/* --- Reset Básico --- */
+/* --- Animação do Cursor Piscando (Para o Terminal) --- */
+@keyframes blink-cursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+
+/* --- Reset Básico (CORRIGIDO) --- */
+html, body {
+    /* Garante que o html e body ocupem a tela inteira */
+    min-height: 100vh;
+    background-color: transparent; 
+}
 body {
-    background-color: var(--xbox-bg-dark); 
     color: var(--xbox-text-primary);
     font-family: var(--font-retro);
     font-size: 14px;
     margin: 0;
     padding: 0;
 }
+
+/* --- ESTILO DO CANVAS STARFIELD --- */
+#starfield-canvas {
+    position: fixed; /* Fixa o canvas na tela */
+    top: 0;
+    left: 0;
+    z-index: 0; 
+    pointer-events: none; 
+    display: block;
+}
+
 
 /* --- Layout Principal --- */
 .container {
@@ -34,8 +56,11 @@ body {
     background-color: var(--xbox-bg-container);
     border: 3px solid var(--xbox-green-dark);
     box-shadow: 0 0 25px var(--xbox-green-bright);
+    
+    /* Z-index alto para ficar acima do Canvas */
     position: relative; 
     z-index: 2;
+    overflow: hidden; 
 }
 
 /* --- Cabeçalho e Título Animado --- */
@@ -87,6 +112,7 @@ body {
 main {
     padding: 20px;
     position: relative; 
+    min-height: 500px; /* Garante que o container não colapse */
 }
 
 /* --- Layout de 2 Colunas (Index) --- */
@@ -108,7 +134,9 @@ main {
     padding-bottom: 5px;
     font-size: 1.5em;
 }
-.content-box ul { padding-left: 20px; }
+.content-box ul { 
+    padding-left: 20px; 
+}
 .content-box li { margin-bottom: 8px; }
 
 /* Lista de Notícias (Sidebar) */
@@ -120,27 +148,20 @@ main {
 }
 .news-list li:last-child { border-bottom: none; }
 
-/* --- Sistema de Anúncios (Index) --- */
+/* --- Sistema de Anúncios em Vídeo (Corrigido) --- */
 .ad-rotator-container {
     width: 728px;
-    height: 90px;
+    height: 410px; /* Tamanho 16:9 para o vídeo */
     margin: 0 auto 20px auto;
     background: #000;
     border: 1px dashed #555;
     overflow: hidden;
+    position: relative; 
 }
-#ad-rotator { width: 100%; height: 100%; }
-.ad-banner {
+#youtube-player {
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
 }
-.ad-banner h3 { margin: 0; font-size: 1.8em; }
-.ad-banner p { margin: 0; font-size: 1em; }
 
 /* --- Rodapé --- */
 .main-footer {
@@ -164,7 +185,7 @@ main {
     min-height: 500px; 
 }
 
-/* --- Tela de Introdução --- */
+/* --- Tela de Introdução (CORRIGIDO) --- */
 #quiz-intro-screen {
     text-align: center;
     padding: 40px 20px;
@@ -173,24 +194,30 @@ main {
     font-size: 2.5em;
     margin-top: 0;
 }
-#quiz-intro-screen p {
-    font-size: 1.2em;
-    color: var(--xbox-text-secondary);
+.cta-button.large {
+    font-size: 1.8em;
+    padding: 15px 30px;
 }
+/* CORREÇÃO DO BUG: Estilo da Lista de Regras */
 #quiz-intro-screen ul {
-    list-style: none;
+    list-style: none; /* REMOVE os marcadores de lista feios */
     padding: 0;
     margin: 30px 0;
-    text-align: left;
-    display: inline-block;
+    text-align: center; /* Centraliza a lista inteira */
 }
 #quiz-intro-screen li {
     font-size: 1.1em;
     margin-bottom: 10px;
+    text-align: center;
 }
 #quiz-intro-screen li strong {
     color: var(--xbox-green-bright);
 }
+#quiz-intro-screen p {
+    font-size: 1.2em;
+    color: var(--xbox-text-secondary);
+}
+
 
 /* --- Botão Principal --- */
 .cta-button {
@@ -212,10 +239,6 @@ main {
 .cta-button:hover {
     background-color: transparent;
     color: var(--xbox-green-bright);
-}
-.cta-button.large {
-    font-size: 1.8em;
-    padding: 15px 30px;
 }
 .cta-button.small {
     font-size: 0.9em;
@@ -393,11 +416,43 @@ main {
     margin-top: 15px;
 }
 
-/* Sistema de Avaliação (Estrelas) - REMOVIDO */
+/* --- (NOVO) TERMINAL INTERATIVO --- */
+
+.command-buttons {
+    display: flex;
+    justify-content: center; 
+    gap: 10px;
+    flex-wrap: wrap; 
+    margin-bottom: 20px;
+}
+.cta-button.command {
+    width: auto; 
+    font-size: 1em; 
+    padding: 8px 15px;
+    margin: 0; 
+}
+.terminal-output {
+    background-color: #000;
+    border: 1px solid var(--xbox-green-dark);
+    padding: 15px;
+    min-height: 100px;
+    font-family: 'Courier New', Courier, monospace; 
+    font-size: 1.1em;
+    line-height: 1.5;
+    color: var(--xbox-text-primary);
+    word-wrap: break-word; 
+}
+.terminal-prompt {
+    color: var(--xbox-green-bright); 
+}
+.terminal-cursor {
+    background-color: var(--xbox-green-bright);
+    animation: blink-cursor 1s infinite;
+}
 
 
 /* ---====================================--- */
-/* --- ESTILOS DO RANKING (CORRIGIDO) --- */
+/* --- ESTILOS DO RANKING (FINALIZADO) --- */
 /* ---====================================--- */
 
 .ranking-table {
@@ -414,14 +469,13 @@ main {
 
 .ranking-table th { 
     padding: 12px; 
-    text-align: center; /* Centraliza TODOS os cabeçalhos */
+    text-align: center;
     vertical-align: middle;
 }
 
 .ranking-table tbody tr { 
     border-bottom: 1px solid #444; 
-    /* CORREÇÃO: Remove o fundo alternado */
-    /* background-color: #222; <-- REMOVIDO */
+    background-color: var(--xbox-bg-box); 
 }
 .ranking-table tbody tr:hover { 
     background-color: #333; 
@@ -431,50 +485,64 @@ main {
     padding: 10px 12px; 
     color: var(--xbox-text-secondary);
     vertical-align: top;
-    text-align: left; /* Padrão de alinhamento do conteúdo */
+    text-align: left;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-/* Colunas Específicas (Largura) */
-.ranking-table .col-pos { width: 8%; }
-.ranking-table .col-nome { width: 30%; }
-.ranking-table .col-pontos { width: 12%; }
-.ranking-table .col-tempo { width: 12%; }
-.ranking-table .col-msg { width: 38%; }
-
-/* Colunas Específicas (Estilo e Alinhamento de CONTEÚDO) */
-.ranking-table td.col-pos { 
+/* Colunas Específicas (Largura e Estilo de CONTEÚDO) */
+.ranking-table .col-pos { 
+    width: 8%; 
     color: var(--xbox-green-bright); 
-    text-align: center; /* Centraliza o "1º" */
+    text-align: center;
     font-weight: bold;
 }
-.ranking-table td.col-nome { 
+.ranking-table .col-nome { 
+    width: 30%; 
     color: var(--xbox-text-primary); 
     font-weight: bold;
-    white-space: normal; 
+    white-space: normal;
     line-height: 1.4;
 }
-.ranking-table td.col-nome small {
+.ranking-table .col-nome small {
     display: block;
     font-weight: normal;
     color: var(--xbox-text-secondary);
     font-size: 0.9em;
+    margin-top: -3px; 
 }
 
-.ranking-table td.col-pontos { 
+.ranking-table .col-pontos { 
+    width: 12%; 
     color: var(--xbox-green-bright); 
     font-weight: bold; 
-    text-align: center; /* Centraliza os pontos */
+    text-align: center;
 }
-.ranking-table td.col-tempo { 
-    text-align: center; /* Centraliza o tempo */
+.ranking-table .col-tempo { 
+    width: 12%; 
+    text-align: center;
 }
-.ranking-table td.col-msg { 
+.ranking-table .col-msg { 
+    width: 38%; 
     font-style: italic;
-    white-space: normal; 
+    white-space: normal;
     line-height: 1.4;
+}
+
+/* --- ESTILO "HOLOFOTE" 1º LUGAR --- */
+.rank-first-place {
+    background-color: var(--xbox-bg-box) !important;
+    box-shadow: 0 0 10px rgba(124, 252, 0, 0.5); 
+}
+.rank-first-place .col-nome strong {
+    color: var(--xbox-green-bright);
+    text-shadow: 0 0 10px var(--xbox-green-bright);
+}
+.rank-first-place .col-pos { 
+    color: var(--xbox-green-bright);
+    text-shadow: 0 0 5px var(--xbox-green-bright);
+    animation: pulse-glow 2s infinite ease-in-out; 
 }
 
 .no-data { 

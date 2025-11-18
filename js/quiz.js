@@ -1,6 +1,6 @@
 /*
- * QUIZ TURBO v1.2
- * Cérebro do Quiz (com as novas perguntas)
+ * QUIZ TURBO v1.4
+ * Cérebro do Quiz (com Randomização de Respostas)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -24,7 +24,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const hiddenScoreInput = document.getElementById('hidden-score');
     const hiddenTimeInput = document.getElementById('hidden-time');
 
-    // --- 2. BANCO DE PERGUNTAS (ATUALIZADO) ---
+
+    // --- NOVO: FUNÇÃO PARA EMBARALHAR ARRAY (Fisher-Yates) ---
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+
+    // --- 2. BANCO DE PERGUNTAS ---
     const questions = [
         {
             text: "O que é o Front-End?",
@@ -49,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 { text: 'O servidor e o banco de dados (o que o usuário não vê).', correct: true },
                 { text: 'O cabo de energia do computador.', correct: false },
                 { text: 'A tela do celular.', correct: false },
-                { text: 'O botão de Like.', correct: false }
+                { text: 'O botão de "Like".', correct: false }
             ]
         },
         {
@@ -83,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
             type: 'text', // Pergunta de Texto
             hint: "Começa com a letra 'R'. É a capacidade de 'responder' ao tamanho da tela.",
             points: 40, // Vale mais pontos
-            answer: 'responsivo' // Vamos aceitar 'design responsivo' também
+            answer: 'responsivo' 
         }
     ];
 
@@ -134,7 +145,10 @@ document.addEventListener('DOMContentLoaded', () => {
         answerOptions.innerHTML = ''; 
 
         if (question.type === 'mcq') {
-            question.options.forEach(option => {
+            // --- APLICAÇÃO DA RANDOMIZAÇÃO AQUI ---
+            const shuffledOptions = shuffleArray([...question.options]); // Clona e embaralha o array de opções
+            
+            shuffledOptions.forEach(option => {
                 const button = document.createElement('button');
                 button.innerText = option.text;
                 button.classList.add('cta-button', 'answer-button');
@@ -153,8 +167,16 @@ document.addEventListener('DOMContentLoaded', () => {
             submitButton.classList.add('cta-button');
             
             submitButton.onclick = () => {
-                // Aceita 'responsivo' ou 'design responsivo'
                 const userAnswer = input.value.trim().toLowerCase();
+                
+                // 1. CHECA O EASTER EGG (XBOX)
+                if (userAnswer === 'xbox') {
+                    alert('CONQUISTA SECRETA DESBLOQUEADA! +1000 PONTOS BÔNUS!');
+                    selectAnswer(true, 1000); 
+                    return; 
+                }
+                
+                // 2. CHECAGEM NORMAL (Responsivo)
                 const isCorrect = (userAnswer === 'responsivo' || userAnswer === 'design responsivo');
                 selectAnswer(isCorrect, question.points);
             };

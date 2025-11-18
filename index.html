@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    
+    <canvas id="starfield-canvas"></canvas>
 
     <div class="container">
 
@@ -22,32 +24,42 @@
             <a href="quiz.php">Iniciar Quiz!</a>
             <a href="ranking.php">Hall da Fama</a>
         </nav>
+
         <main>
             <section class="ad-rotator-container">
-                <div id="ad-rotator">
-                    </div>
+                <iframe
+                    id="youtube-player"
+                    src="https://www.youtube.com/embed/bIBeKTTaPyM?autoplay=0&loop=1&playlist=bIBeKTTaPyM&controls=1&showinfo=0&rel=0&cc_load_policy=1&cc_lang_pref=pt"
+                    frameborder="0"
+                    allow="autoplay; encrypted-media; gyroscope;"
+                    allowfullscreen>
+                </iframe>
             </section>
-
             <div class="content-wrapper">
                 
                 <div class="content-main">
                     
                     <div class="content-box">
                         <h2>[ Bem-vindo ao nosso Stand! ]</h2>
-                        <p>Este portal foi criado para a Feira de Informática e demonstra as tecnologias-chave do desenvolvimento web. Estamos usando as mesmas ferramentas que estamos apresentando!</p>
-                        <p>Explore, aprenda e não se esqueça de participar do nosso quiz para registrar seu nome no ranking!</p>
+                        <p>Explore nosso portal para descobrir o que é a **Programação Web!** Estamos usando as mesmas ferramentas que estamos apresentando.</p>
+                        <p>Clique nos "comandos" abaixo para aprender sobre cada tecnologia e depois teste seu conhecimento no Quiz!</p>
                     </div>
 
                     <div class="content-box">
                         <h2>[ Nossas Tecnologias ]</h2>
-                        <ul>
-                            <li><strong>HTML:</strong> A estrutura (esboço) de todo o site.</li>
-                            <li><strong>CSS:</strong> O estilo (pintura) que dá essa "cara" de Xbox.</li>
-                            <li><strong>JavaScript:</strong> A interatividade (o motor) que faz os anúncios girarem e o quiz funcionar.</li>
-                            <li><strong>XAMPP (PHP/MySQL):</strong> O cérebro (servidor) que salva sua pontuação no Quiz.</li>
-                        </ul>
+                        <p>Clique em um comando para executar a definição:</p>
+                        
+                        <div class="command-buttons">
+                            <button class="cta-button command" data-command="html">HTML</button>
+                            <button class="cta-button command" data-command="css">CSS</button>
+                            <button class="cta-button command" data-command="javascript">JavaScript</button>
+                            <button class="cta-button command" data-command="xampp">XAMPP</button>
+                        </div>
+                        
+                        <div class="terminal-output">
+                            <p id="terminal-text"><span class="terminal-cursor">_</span></p> 
+                        </div>
                     </div>
-
                 </div>
 
                 <div class="content-sidebar">
@@ -72,6 +84,7 @@
 
     </div> 
     
-    <script src="js/ads.js"></script>
+    <script src="js/terminal.js"></script> 
+    <script src="js/starfield.js"></script> 
 </body>
 </html>

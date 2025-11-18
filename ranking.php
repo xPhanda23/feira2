@@ -8,9 +8,12 @@ include 'config.php'; // Inclui a conexão com o banco
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>:: HALL DA FAMA - X-PORTAL ::</title>
+    <meta http-equiv="refresh" content="10">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+    <canvas id="starfield-canvas"></canvas>
 
     <div class="container">
 
@@ -56,35 +59,31 @@ include 'config.php'; // Inclui a conexão com o banco
                                 
                                 while ($row = $result->fetch_assoc()) {
                                     
-                                    // Formata o tempo
                                     $tempo_gasto = intval($row['tempo_gasto']);
                                     $minutos = floor($tempo_gasto / 60);
                                     $segundos = $tempo_gasto % 60;
                                     $tempo_formatado = sprintf('%02d:%02d', $minutos, $segundos);
 
-                                    echo "<tr>";
+                                    $row_class = ''; 
+                                    $icon = '';      
                                     
-                                    // Coluna Posição
+                                    if ($posicao == 1) {
+                                        $row_class = ' class="rank-first-place"'; 
+                                        $icon = '👑 '; 
+                                    }
+
+                                    echo "<tr{$row_class}>";
+                                    
                                     echo "<td class='col-pos'>" . $posicao++ . "º</td>";
                                     
-                                    // --- ATUALIZAÇÃO AQUI ---
-                                    // Coluna Nome e Série (agora em duas linhas)
                                     echo "<td class='col-nome'>";
-                                    echo "<strong>" . htmlspecialchars($row['nome']) . "</strong>"; // Nome em negrito
-                                    echo "<small>" . htmlspecialchars($row['serie']) . "</small>"; // Série na linha de baixo
+                                    echo "<strong class='rank-name-text'>" . $icon . htmlspecialchars($row['nome']) . "</strong>"; 
+                                    echo "<small class='rank-series-text'>" . htmlspecialchars($row['serie']) . "</small>"; 
                                     echo "</td>";
-                                    // --- FIM DA ATUALIZAÇÃO ---
                                     
-                                    // Coluna Pontos
                                     echo "<td class='col-pontos'>" . htmlspecialchars($row['pontuacao']) . "</td>";
-                                    
-                                    // Coluna Tempo
                                     echo "<td class='col-tempo'>" . $tempo_formatado . "</td>";
-                                    
-                                    // --- ATUALIZAÇÃO AQUI ---
-                                    // Coluna Mensagem (sem aspas extras)
                                     echo "<td class='col-msg'>" . htmlspecialchars($row['mensagem']) . "</td>";
-                                    // --- FIM DA ATUALIZAÇÃO ---
                                     
                                     echo "</tr>";
                                 }
@@ -107,5 +106,7 @@ include 'config.php'; // Inclui a conexão com o banco
         </footer>
 
     </div>
+    
+    <script src="js/starfield.js"></script> 
 </body>
 </html>

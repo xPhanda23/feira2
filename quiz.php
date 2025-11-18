@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    
+    <canvas id="starfield-canvas"></canvas>
+
     <div class="container">
         <header class="main-header">
             <div class="logo">
@@ -96,5 +99,7 @@
     </div> 
     
     <script src="js/quiz.js"></script>
+    
+    <script src="js/starfield.js"></script> 
 </body>
 </html>
